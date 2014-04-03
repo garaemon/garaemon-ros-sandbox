@@ -14,12 +14,12 @@ with open('../launch/tf2.launch', 'w') as f:
     <node pkg="tf2_ros"
           type="static_transform_publisher"
           name="tf_broadcaster_%d"
-          args="%d 0 0 0 0 0 /map /frame%d 10">
+          args="%d 0 0 0 0 0 0 map frame%d">
     </node>
     <node pkg="tf2_evaluate"
           type="tf2_echo"
           name="tf2_echo_%d"
-          args="/map /frame%d">
+          args="map frame%d">
     </node>
     ''' % (i, i, i, i, i)
     f.write(msg)

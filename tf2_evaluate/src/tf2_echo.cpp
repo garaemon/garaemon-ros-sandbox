@@ -11,13 +11,13 @@ int main(int argc, char** argv) {
   //tf2_ros::TransformListener listener(core);
   client.waitForServer();
   std::string from(argv[1]);
-  std::string to(argv[1]);
+  std::string to(argv[2]);
   
   while(node.ok()) {
     
     try {
       geometry_msgs::TransformStamped trans = client.lookupTransform(from, to, ros::Time(0.0), ros::Duration(1.0));
-      ROS_INFO("- Translation: [%0.3f, %0.3f, %0.3f]",
+      ROS_INFO("- Translation: [%f, %f, %f]",
                trans.transform.translation.x,
                trans.transform.translation.y,
                trans.transform.translation.z);
@@ -31,6 +31,7 @@ int main(int argc, char** argv) {
     catch (std::runtime_error e) {
       ROS_WARN_STREAM("failed to loolup transform from " << from << " to " << to);
     }
+    ros::spinOnce();
     rate.sleep();
   }
   
