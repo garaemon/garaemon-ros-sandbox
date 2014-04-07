@@ -20,7 +20,13 @@ target_link_libraries(tf2_echo ${catkin_LIBRARIES})
 add_executable(tf2_publish src/tf2_publish.cpp)
 target_link_libraries(tf2_publish ${catkin_LIBRARIES})
 
-install(TARGETS tf2_echo tf2_publish
+add_executable(tf2_lookup_bench src/tf2_lookup_bench.cpp)
+target_link_libraries(tf2_lookup_bench ${catkin_LIBRARIES})
+
+add_executable(tf_lookup_bench src/tf_lookup_bench.cpp)
+target_link_libraries(tf_lookup_bench ${catkin_LIBRARIES})
+
+install(TARGETS tf2_echo tf2_publish tf2_lookup_bench tf_lookup_bench
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
