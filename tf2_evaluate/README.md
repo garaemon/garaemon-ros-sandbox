@@ -52,10 +52,11 @@ tfおよびtf2の`lookupTransformation`に必要となる時間の軽鎖奥を�
 `tf_lookup_bench.cpp`, `tf2_lookup_bench.cpp`によって測定した。
 
 * tf 0.001msec程度
-* tf2 0.1sec程度
+* tf2 0.01sec~0.0005sec程度
 
 tf2の`lookupTransform`では大きな時間がかかることがわかった。
 これはactionlibによって最低でも2回topicによって通信が行われることが原因と推定できる。
+この周期は`tf2_ros::BufferClient`の第二引数で指定できる。
 
 ## 結論
 tf2によって計算負荷を大きく下げることができるが、`lookupTransform`に掛かる時間は1000倍程度大きくなる。

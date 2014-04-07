@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
   
   ros::Rate rate(1.0);
   
-  tf2_ros::BufferClient client ("tf2_buffer_server", 10, ros::Duration(2.0));
+  tf2_ros::BufferClient client ("tf2_buffer_server", 1000, ros::Duration(2.0));
   //tf2_ros::TransformListener listener(core);
   client.waitForServer();
   std::string from(argv[1]);
